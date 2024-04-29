@@ -1,0 +1,104 @@
+version: "4"
+
+services:
+    livewire:
+        image: kooldev/php:8.1
+        container_name: livewire
+        working_dir: /livewire
+        restart: always
+        networks:
+            - internal
+            - nginx_network
+        volumes:
+            - ".:/livewire"
+            - "./docker/php/php-ini-overrides.ini:/etc/php/8.1/fpm/conf.d/99-overrides.ini"
+        links:
+            - livewire-database
+        depends_on:
+            - livewire-database
+        environment:
+            - PHP_EXECUTABLE_PATH=/usr/local/bin/php
+    livewire-nginx:
+        image: nginx:alpine
+        container_name: livewire-nginx
+        restart: always
+        working_dir: /livewire
+        networks:
+            - internal
+            - nginx_network
+        ports:
+            - "9005:80"
+        volumes:
+            - .:/livewire
+            - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+        depends_on:
+            - livewire
+    livewire-composer:
+        image: composer:latest
+        container_name: livewire-composer
+        working_dir: /livewire
+        command: update --ignore-platform-reqs
+        volumes:
+            - .:/livewire
+        restart: on-failure
+        depends_on:
+            - livewire
+    livewire-database:
+        image: mariadb:latest
+        restart: always
+        container_name: livewire-database
+        working_dir: /livewire
+        networks:
+            - internal
+            - nginx_network
+        command: mysqld --skip-grant-tables
+        environment:
+            - MYSQL_ROOT_PASSWORD=password
+            - MYSQL_DATABASE=livewire
+            - MYSQL_USER=root
+            - MYSQL_PASSWORD=password
+        volumes:
+            - .:/livewire
+            - ./livewire-database:/var/lib/mysql
+        ports:
+            - "8003:3306"
+    livewire-redis:
+        image: "redis:alpine"
+        ports:
+            - "${FORWARD_REDIS_PORT:-6381}:6381"
+        volumes:
+            - livewire-redis:/data
+        networks:
+            - internal
+            - nginx_network
+        command: redis-server --save 20 1 --loglevel warning --requirepass eYVX7EwVmmxKPCDmwMtyKVge8oLd2t81
+
+    livewire-npm:
+        image: node:20-alpine
+        container_name: livewire-npm
+        working_dir: /livewire
+        volumes:
+            - ".:/livewire"
+        depends_on:
+            - livewire
+    adminer:
+        image: adminer
+        restart: always
+        networks:
+            - nginx_network
+        ports:
+            - "8080:8080"
+
+networks:
+    nginx_network:
+        external: true
+    internal:
+        driver: overlay
+        name: "global"
+        attachable: true
+        external: true
+volumes:
+    livewire-database:
+        driver: local
+    livewire-redis:
+        driver: local
