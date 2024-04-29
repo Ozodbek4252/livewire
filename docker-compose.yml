@@ -2,7 +2,7 @@ version: "4"
 
 services:
     livewire:
-        image: kooldev/php:8.1
+        image: kooldev/php:8.2
         container_name: livewire
         working_dir: /livewire
         restart: always
@@ -11,7 +11,7 @@ services:
             - nginx_network
         volumes:
             - ".:/livewire"
-            - "./docker/php/php-ini-overrides.ini:/etc/php/8.1/fpm/conf.d/99-overrides.ini"
+            - "./docker/php/php-ini-overrides.ini:/etc/php/8.2/fpm/conf.d/99-overrides.ini"
         links:
             - livewire-database
         depends_on:

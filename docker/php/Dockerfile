@@ -1,4 +1,4 @@
-FROM phpdockerio/php:8.1-fpm
+FROM phpdockerio/php:8.2-fpm
 WORKDIR "/livewire"
 
 # Install Node.js and npm
