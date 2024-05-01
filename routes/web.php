@@ -22,5 +22,7 @@ Route::get('/', function () {
 Route::get('starter', [StarterController::class, 'index'])->name('starter.index');
 Route::get('starter/lifecycle', [StarterController::class, 'lifecycle'])->name('starter.lifecycle');
 Route::get('starter/basic-table', [StarterController::class, 'basicTable'])->name('starter.basic-table');
+Route::get('starter/basic-form', [StarterController::class, 'basicForm'])->name('starter.basic-form');
+Route::get('starter/basic-form/create', [StarterController::class, 'createBasicForm'])->name('starter.basic-form.create');
 
 Route::get('alpine', [AlpineController::class, 'index'])->name('alpine.index');

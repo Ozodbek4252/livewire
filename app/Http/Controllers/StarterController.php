@@ -20,6 +20,10 @@ class StarterController extends Controller
             [
                 'name' => 'Basic Table',
                 'link' => 'starter.basic-table'
+            ],
+            [
+                'name' => 'Basic Form',
+                'link' => 'starter.basic-form'
             ]
         ];
     }
@@ -43,5 +47,19 @@ class StarterController extends Controller
         $sidebars = $this->getSidebars();
 
         return view('pages.starter.basic-table', compact('sidebars'));
+    }
+
+    public function basicForm()
+    {
+        $sidebars = $this->getSidebars();
+
+        return view('pages.starter.basic-form', compact('sidebars'));
+    }
+
+    public function createBasicForm()
+    {
+        $sidebars = $this->getSidebars();
+
+        return view('pages.starter.basic-form.create-basic-form', compact('sidebars'));
     }
 }
