@@ -5,7 +5,9 @@
                 <li class="nav-item">
                     <a href="{{ route($sidebar['link']) }}" class="nav-link align-middle px-0">
                         <i class="fs-4 bi-house"></i> <span
-                            class="ms-1 d-none d-sm-inline text-white">{{ $sidebar['name'] }}</span>
+                            class="ms-1 d-none d-sm-inline
+                            {{ Route::currentRouteName() == $sidebar['link'] ? 'text-white' : '' }}
+                            ">{{ $sidebar['name'] }}</span>
                     </a>
                 </li>
             @endforeach
