@@ -14,11 +14,27 @@ class StarterController extends Controller
                 'link' => 'starter.index'
             ],
             [
-                'name' => 'Users',
-                'link' => 'starter.index'
+                'name' => 'Lifecycle',
+                'link' => 'starter.lifecycle'
             ],
         ];
-        
+
         return view('pages.starter.index', compact('sidebars'));
+    }
+
+    public function lifecycle()
+    {
+        $sidebars = [
+            [
+                'name' => 'Properties',
+                'link' => 'starter.index'
+            ],
+            [
+                'name' => 'Lifecycle',
+                'link' => 'starter.lifecycle'
+            ],
+        ];
+
+        return view('pages.starter.lifecycle', compact('sidebars'));
     }
 }

@@ -20,4 +20,6 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('starter', [StarterController::class, 'index'])->name('starter.index');
-Route::get('apline', [AlpineController::class, 'index'])->name('alpine.index');
+Route::get('starter/lifecycle', [StarterController::class, 'lifecycle'])->name('starter.lifecycle');
+
+Route::get('alpine', [AlpineController::class, 'index'])->name('alpine.index');

@@ -5,8 +5,8 @@ namespace App\Livewire\Starter;
 use Livewire\Attributes\Title;
 use Livewire\Component;
 
-#[Title('Properties')]
-class Properties extends Component
+#[Title('Lifecycle')]
+class Lifecycle extends Component
 {
     public $todo = '';
 
@@ -17,6 +17,11 @@ class Properties extends Component
         'Movie night',
     ];
 
+    public function updated($property, $value) // or updatedTodo($value)
+    {
+        $this->$property = strtoupper($value); // or $this->todo = strtoupper($value);
+    }
+
     public function add()
     {
         $this->todos[] = $this->todo;
@@ -26,6 +31,6 @@ class Properties extends Component
 
     public function render()
     {
-        return view('livewire.starter.properties');
+        return view('livewire.starter.lifecycle');
     }
 }
