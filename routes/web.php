@@ -21,5 +21,6 @@ Route::get('/', function () {
 
 Route::get('starter', [StarterController::class, 'index'])->name('starter.index');
 Route::get('starter/lifecycle', [StarterController::class, 'lifecycle'])->name('starter.lifecycle');
+Route::get('starter/basic-table', [StarterController::class, 'basicTable'])->name('starter.basic-table');
 
 Route::get('alpine', [AlpineController::class, 'index'])->name('alpine.index');
