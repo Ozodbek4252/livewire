@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AlpineController;
+use App\Http\Controllers\StarterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('layout');
+})->name('home');
+
+Route::get('starter', [StarterController::class, 'index'])->name('starter.index');
+Route::get('apline', [AlpineController::class, 'index'])->name('alpine.index');
