@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class StarterController extends Controller
 {
     private function getSidebars()
@@ -24,6 +22,10 @@ class StarterController extends Controller
             [
                 'name' => 'Basic Form',
                 'link' => 'starter.basic-form'
+            ],
+            [
+                'name' => 'Nesting',
+                'link' => 'starter.nesting'
             ]
         ];
     }
@@ -61,5 +63,12 @@ class StarterController extends Controller
         $sidebars = $this->getSidebars();
 
         return view('pages.starter.basic-form.create-basic-form', compact('sidebars'));
+    }
+
+    public function nesting()
+    {
+        $sidebars = $this->getSidebars();
+
+        return view('pages.starter.nesting', compact('sidebars'));
     }
 }
