@@ -25,5 +25,6 @@ Route::get('starter/basic-table', [StarterController::class, 'basicTable'])->nam
 Route::get('starter/basic-form', [StarterController::class, 'basicForm'])->name('starter.basic-form');
 Route::get('starter/basic-form/create', [StarterController::class, 'createBasicForm'])->name('starter.basic-form.create');
 Route::get('starter/nesting', [StarterController::class, 'nesting'])->name('starter.nesting');
+Route::get('starter/validation', [StarterController::class, 'validation'])->name('starter.validation');
 
 Route::get('alpine', [AlpineController::class, 'index'])->name('alpine.index');

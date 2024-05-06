@@ -26,7 +26,11 @@ class StarterController extends Controller
             [
                 'name' => 'Nesting',
                 'link' => 'starter.nesting'
-            ]
+            ],
+            [
+                'name' => 'Validation',
+                'link' => 'starter.validation'
+            ],
         ];
     }
 
@@ -70,5 +74,12 @@ class StarterController extends Controller
         $sidebars = $this->getSidebars();
 
         return view('pages.starter.nesting', compact('sidebars'));
+    }
+
+    public function validation()
+    {
+        $sidebars = $this->getSidebars();
+
+        return view('pages.starter.validation', compact('sidebars'));
     }
 }

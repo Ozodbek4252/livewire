@@ -3,7 +3,7 @@
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
             @foreach ($sidebars as $sidebar)
                 <li class="nav-item">
-                    <a href="{{ route($sidebar['link']) }}" class="nav-link align-middle px-0">
+                    <a wire:navigate href="{{ route($sidebar['link']) }}" class="nav-link align-middle px-0">
                         <i class="fs-4 bi-house"></i> <span
                             class="ms-1 d-none d-sm-inline
                             {{ Str::startsWith(Route::currentRouteName(), $sidebar['link']) ? 'text-white' : '' }}

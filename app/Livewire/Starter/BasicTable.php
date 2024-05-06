@@ -31,7 +31,7 @@ class BasicTable extends Component
             'content' => $this->content,
         ]);
 
-        $this->redirect(route('home'));
+        $this->redirect(route('home'), navigate: true);
     }
 
     public function render()

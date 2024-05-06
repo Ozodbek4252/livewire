@@ -27,7 +27,7 @@ class CreateBasicForm extends Component
             'content' => $this->content,
         ]);
 
-        $this->redirect(route('starter.basic-form'));
+        $this->redirect(route('starter.basic-form'), navigate: true);
     }
 
     public function render()
